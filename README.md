@@ -1,7 +1,4 @@
 > Esercizio ...
-
-![preview](./.github/preview.png)
-
 ## SPATIE
 
 - DESCRIZIONE:
