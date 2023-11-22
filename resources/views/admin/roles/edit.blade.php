@@ -27,6 +27,44 @@
               </div>
             </form>
           </div>
+          <div class="mt-6 p-2">
+            <h2 class="text-2xl font-semibold">Role Permissions</h2>
+            <div class="mt-4 p-2">
+              @if ($role->permissions)
+                  @foreach ($role->permissions as $role_permission)
+                    <form  class="inline-block"
+                    action="{{ route('admin.roles.permissions.revoke', [$role->id, $role_permission->id])}}" 
+                    method="POST"
+                    onsubmit="return confirm('Are you sure?')"
+                  >
+                    @method('DELETE')
+                    @csrf
+                    <button class="px-4 py-2 inline-block bg-red-500 hover:bg-red-700 text-white font-medium hover:underline rounded-md" type="submit">{{ $role_permission->name }}</button>
+                  </form>
+                  @endforeach
+              @endif
+            </div>
+            <div class="max-w-xl mt-6">
+              <form action="{{ route('admin.roles.permissions',$role) }}" method="post">
+                @csrf
+                <div class="sm:col-span-6">
+                  <label for="permission" class="block text-sm font-medium text-gray-700">Permission</label>
+                  <select id="permission" name="permission" autocomplete="permission-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    @foreach ($permissions as $permission)
+                      <option value="{{ $permission->name }}">
+                        {{ $permission->name }}
+                      </option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="sm:col-span-6 pt-3">
+                  <div class="mt-1">
+                    <button type="submit" class="px-4 py-2 bg-green-500 hover:bg-green-700 rounded-md">Update Role</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
   </div>
