@@ -24,7 +24,7 @@ class PermissionController extends Controller
             'name.required'=>'il campo permission name è obbligatorio'
         ]);
 
-        Permission::create($formData);
+        Permission::create($formData)->with('message', 'Permission Created successfully');
 
         return to_route('admin.permissions.index');
     }
@@ -42,6 +42,12 @@ class PermissionController extends Controller
 
         $permission->update($formData);
 
-        return to_route('admin.permissions.index');
+        return to_route('admin.permissions.index')->with('message', 'Permission Updated successfully');
+    }
+
+    public function destroy(Permission $permission){
+        $permission->delete();
+
+        return to_route('admin.permissions.index')->with('message', 'Permission Deletted successfully');
     }
 }

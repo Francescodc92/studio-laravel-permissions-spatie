@@ -27,7 +27,16 @@
                           <div class="flex justify-end">
                             <div class="space-x-2">
                               <a href="{{ route('admin.roles.edit', $role->id) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-medium hover:underline rounded-md">Edit</a>
-                              <a href="#" class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white font-medium hover:underline rounded-md">Delete</a>
+
+                              <form  class="inline-block"
+                                action="{{ route('admin.roles.destroy', $role->id)}}" 
+                                method="POST"
+                                onsubmit="return confirm('Are you sure?')"
+                              >
+                                @method('DELETE')
+                                @csrf
+                                <button class="px-4 py-2 inline-block bg-red-500 hover:bg-red-700 text-white font-medium hover:underline rounded-md" type="submit">Delete</button>
+                              </form>
                             </div>
                           </div>
                       </td>

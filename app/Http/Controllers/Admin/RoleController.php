@@ -9,7 +9,7 @@ use Spatie\Permission\Models\Role;
 class RoleController extends Controller
 {
     public function index() {
-        $roles = Role::all();
+        $roles = Role::whereNotIn('name', ['admin'])->get();
         return view('admin.roles.index', compact('roles'));
     }
 
@@ -25,7 +25,7 @@ class RoleController extends Controller
             'name.min'=> 'il campo role name deve ricevere almeno 3 caratteri'
         ]);
         
-        Role::create($formData);
+        Role::create($formData)->with('message', 'Role Created successfully');
 
         return to_route('admin.roles.index');
     }
@@ -43,6 +43,12 @@ class RoleController extends Controller
         ]);
 
         $role->update($formData);
-        return to_route('admin.roles.index');
+        return to_route('admin.roles.index')->with('message', 'Role Updated successfully');
+    }
+
+    public function destroy(Role $role){
+        $role->delete();
+
+        return to_route('admin.roles.index')->with('message', 'Role Deletted successfully');
     }
 }

@@ -6,7 +6,7 @@
             <a href="{{ route('admin.roles.index') }}" class="px-4 py-2 mb-3 bg-green-700  text-slate-100 hover:bg-green-500 rounded-md ">Role Index</a>
           </div>
           <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-1">
-            <form action="{{ route('admin.roles.update',$role->id) }}" method="post">
+            <form action="{{ route('admin.roles.update',$role) }}" method="post">
               @method('PUT')
               @csrf
               <div class="sm:col-span-6">
