@@ -29,8 +29,8 @@
                       <td class="px-6 py-4 text-right">
                           <div class="flex justify-end">
                             <div class="space-x-2">
-                              <a href="" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-medium hover:underline rounded-md">Roles</a>
-                              <a href="" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-medium hover:underline rounded-md">Permissions</a>
+                              <a href="{{ route('admin.users.show', $user->id) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-medium hover:underline rounded-md">Roles</a>
+                             
 
                               <form  class="inline-block"
                                 action="{{ route('admin.users.destroy', $user->id)}}" 
