@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,8 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::post('/permissions/{permission}/role', [PermissionController::class, 'AssignRole'])->name('permissions.roles');
     Route::delete('/permissions/{permission}/role/{role}', [PermissionController::class, 'removeRole'])->name('permissions.roles.remove');
     Route::resource('/permissions', PermissionController::class);
+    Route::get('/users',[UserController::class, 'index'])->name('users.index');
+    Route::delete('/users/{user}',[UserController::class, 'destroy'])->name('users.destroy');
 });
 
 require __DIR__.'/auth.php';
