@@ -6,6 +6,7 @@
 
 - DOCUMENTAZIONE
   - [SPATIE](https://spatie.be/docs/laravel-permission/v5/basic-usage/middleware)
+  - [video Youtube](https://www.youtube.com/watch?v=cNrMdCXNml8&t=3527s)
 
 ## Tecnologie
 - SPATIE
